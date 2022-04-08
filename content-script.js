@@ -104,8 +104,13 @@ function dataFormating(data, start_date){
     let formatdata = []
     let date = new Date(start_date)
     data.forEach((d, i)=>{
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        month = month < 10 ? '0' + month : month;
+        day = day < 10 ? '0' + day : day;
         formatdata.push({
-            date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+            date: `${year.toString()}-${month.toString()}-${day.toString()}`,
             value: d,
         })
         date.setDate(date.getDate()+1)
