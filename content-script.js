@@ -160,6 +160,6 @@ function downloadCsvData(data){
       }
     }
     $('.downlink').attr('download', 'data.csv')
-    $('.downlink').attr('href', "data:text/csv;charset=utf-8," + encodeURIComponent(JSON.stringify(content)))
+    $('.downlink').attr('href', "data:text/csv;charset=utf-8," + encodeURIComponent(content))
     $('.downlink')[0].click()
 }
