@@ -1,22 +1,17 @@
-# baiduIndexDownloader
-A Chrome Extension downloader for Baidu search index.
+# 介绍
 
-# Install
+这是一个下载百度指数数据的浏览器插件
 
-- Download this rep
-- unzip
-- install chrome extension through `Load unpacked`
 
-# Use
+# 安装
 
-- Navigate to `index.baidu.com`
-- login 
-- search words of your interest
-- find & click the "下载" link
-- get the `data.json` file
+- 下载并解压
+- 浏览器 -> 扩展中心 -> 加载包
 
-# Status
+# 使用
 
-This extension is tested on Chrome(Version 95).
-I dont have much time to maintain the repo, 
-so if you are interested, take it away.
+在百度指数页面点击按钮`下载JSON`和`下载CSV`即可
+
+# 注意(重要)
+
+一次最好只下载一年的数据，且不要跨年下载；否则可能出现数据不全的情况
