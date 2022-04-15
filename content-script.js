@@ -4,13 +4,13 @@ let loadButton = document.createElement('span');
 loadButton.innerText = '下载JSON';
 loadButton.style = 'margin-left: 10px;';
 loadButton.className = 'keyword-group__ok'
-loadButton.addEventListener('click', handleLoadRequest('json'));
+loadButton.addEventListener('click', handleJsonLoadRequest);
 
 let loadCsvButton = document.createElement('span');
 loadCsvButton.innerText = '下载CSV';
 loadCsvButton.style = 'margin-left: 10px;';
-loadCsvButton.className = 'keyword-group__csvok'
-loadCsvButton.addEventListener('click', handleLoadCsvRequest('csv'));
+loadCsvButton.className = 'keyword-group__ok'
+loadCsvButton.addEventListener('click', handleCsvLoadRequest);
 
 document.querySelector('.keyword-group').append(loadButton)
 document.querySelector('.keyword-group').append(loadCsvButton)
@@ -19,8 +19,12 @@ let downlink = document.createElement('a')
 downlink.className = 'downlink'
 document.querySelector('.keyword-group').append(downlink)
 
-function handleLoadRequest(down_type) {
-    get_encrypt('search', down_type)
+function handleJsonLoadRequest() {
+    get_encrypt('search', 'json')
+}
+
+function handleCsvLoadRequest() {
+    get_encrypt('search', 'csv')
 }
 
 function getKey(uniqid, callback){
@@ -151,7 +155,7 @@ function downloadData(data){
 
 function downloadCsvData(data){
     // build data
-    data = JSON.parse( data );
+    // data = JSON.parse( data );
     let content = 'name,date,value\n';
     for (let item in data) {
       let formatData = data[item]['all']['formatdata'];

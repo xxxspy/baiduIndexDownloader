@@ -1,23 +1,23 @@
 {
-    "name": "百度指数",
-    "version": "1.0",
-    "author": "www.mlln.cn",
-    "homepage_url": "https://mlln.cn",
-    "manifest_version": 3,
-    "background": {
-      "service_worker": "background.js"
-    },
-    "content_scripts": [
-      {
-        "matches": [
-          "https://index.baidu.com/*"
-        ],
-        "all_frames": true,
-        "js": ["content-script.js", "jquery.min.js"]
-      }
-    ],
-    "action": {},
-    "permissions": [
+  "name": "百度指数",
+  "version": "1.0",
+  "author": "www.mlln.cn",
+  "homepage_url": "https://mlln.cn",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
         "https://index.baidu.com/*"
-    ]
-  }
+      ],
+      "all_frames": true,
+      "js": ["content-script.js", "jquery.min.js"]
+    }
+  ],
+  "action": {},
+  "permissions": [
+      "https://index.baidu.com/*"
+  ]
+}
