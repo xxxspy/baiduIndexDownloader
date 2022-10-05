@@ -30,4 +30,40 @@ chrome.runtime.onInstalled.addListener(async () => {
     // To view this log message, open chrome://extensions, find "Hello, World!", and click the
     // "service worker" link in th card to open DevTools.
     // console.log(`Created tab ${tab.id}`);
+
   });
+
+//   chrome.webRequest.onBeforeSendHeaders.addListener(details=>{
+//     console.log(details)
+//     return details.requestHeaders
+//   }, {
+//     urls: [
+//         '*://index.baidu.com/api/SearchApi/index*'
+//     ],
+//     types: [
+//         'main_frame',
+//         'sub_frame',
+//         'xmlhttprequest'
+//     ]
+// }, );
+
+// chrome.webRequest.onBeforeSendHeaders.addListener((details) => {
+//      console.log(details);
+//   },
+//   {urls: ["*://index.baidu.com/*"]}
+// );
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    for (var i = 0; i < details.requestHeaders.length; ++i) {
+      if (details.requestHeaders[i].name=='Cipher-Text'){
+        console.log(details.requestHeaders[i].value)
+        console.log(details)
+        chrome.tabs.sendMessage(details.tabId, details.requestHeaders[i].value); 
+      }
+    }
+    return {requestHeaders: details.requestHeaders};
+  },
+  {urls: ["https://index.baidu.com/api/SearchApi/index*"]},
+  ["blocking", "requestHeaders"]
+);

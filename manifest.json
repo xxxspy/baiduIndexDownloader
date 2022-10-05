@@ -3,7 +3,7 @@
   "version": "1.0",
   "author": "www.mlln.cn",
   "homepage_url": "https://mlln.cn",
-  "manifest_version": 3,
+  "manifest_version": 2,
   "background": {
     "service_worker": "background.js"
   },
@@ -16,8 +16,10 @@
       "js": ["content-script.js", "jquery.min.js"]
     }
   ],
-  "action": {},
+  // "action": {},
   "permissions": [
-      "https://index.baidu.com/*"
+      "webRequest",
+      "webRequestBlocking",
+      "*://index.baidu.com/*"
   ]
 }

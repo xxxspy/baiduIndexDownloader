@@ -93,7 +93,11 @@ function get_encrypt(type, down_type){
         }
     }
     url = pre_url_map[type] + $.param(request_args)
-    fetch(url).then(r => r.json()).then(result => {
+    let headers = {
+        "cipher-text": window["cipher-text"],
+    }
+    fetch(url, {headers, }).then(r => r.json()).then(result => {
+        console.log(result)
         getKey(result['data']['uniqid'], key=>{
             if(type=='search'){
                 searchData(result, key, start_date, down_type)
@@ -167,3 +171,8 @@ function downloadCsvData(data){
     $('.downlink').attr('href', "data:text/csv;charset=utf-8," + encodeURIComponent(content))
     $('.downlink')[0].click()
 }
+
+chrome.runtime.onMessage.addListener(function (response, sendResponse) {
+    console.log({"cipher-text": response})
+    window["cipher-text"] = response
+});
